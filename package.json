@@ -1,0 +1,38 @@
+{
+  "name": "chessclock",
+  "version": "0.0.1",
+  "description": "a simple clock for chess",
+  "main": "main.js",
+  "scripts": {
+    "build": "gulp",
+    "start": "electron ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mike820324/chessClock.git"
+  },
+  "keywords": [
+    "electron",
+    "reactjs",
+    "clock"
+  ],
+  "author": "Rueimin Jiang (MicroMike)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mike820324/chessClock/issues"
+  },
+  "homepage": "https://github.com/mike820324/chessClock#readme",
+  "dependencies": {
+    "immutable": "^3.7.4",
+    "react": "^0.13.3",
+    "react-redux": "^0.8.2",
+    "redux": "^1.0.1",
+    "redux-thunk": "^0.1.0",
+    "reselect": "0.0.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.0"
+  }
+}
