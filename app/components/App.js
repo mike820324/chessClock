@@ -10,14 +10,16 @@ import { GAME_START, GAME_END, GAME_PAUSE } from "../constants/gameStatusType";
 class App extends Component {
     logTime() {
         const { dispatch, gameStatus, clockStatus } = this.props;
-        dispatch(addHistory(gameStatus.currentPlayer, clockStatus.player));
-        dispatch(switchPlayer());
-        dispatch(resetTime("player"));
+        if(gameStatus.status === GAME_START) {
+            dispatch(addHistory(gameStatus.currentPlayer, clockStatus.player));
+            dispatch(switchPlayer());
+            dispatch(resetTime("player"));
+        }
     }
 
     onClickHandler() {
         const { dispatch, gameStatus } = this.props;
-        if(gameStatus.gameStart === GAME_START) {
+        if(gameStatus.status === GAME_START) {
             dispatch(endGame());
         } else {
             dispatch(startGame());
@@ -26,11 +28,11 @@ class App extends Component {
 
     showGameStatus() {
         const { gameStatus } = this.props;
-        if(gameStatus.gameStart === GAME_START) {
+        if(gameStatus.status === GAME_START) {
             return "start";
-        } else if(gameStatus.gameStart === GAME_END) {
+        } else if(gameStatus.status === GAME_END) {
             return "end";
-        } else if(gameStatus.gameStart === GAME_PAUSE) {
+        } else if(gameStatus.status === GAME_PAUSE) {
             return "paused";
         }
     }
