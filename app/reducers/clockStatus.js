@@ -1,5 +1,5 @@
 import { Map } from "immutable";
-import { TIME_TICK, RESET_TIME } from "../constants/actionType";
+import { TIME_TICK, RESET_CLOCK } from "../constants/actionType";
 
 const clockInitailState = Map(
     {
@@ -13,7 +13,7 @@ export function clockStatus(state = clockInitailState, action) {
         const temp1 = state.set("game", state.get("game") + 1);
         return temp1.set("player", state.get("player") + 1);
     }
-    else if(action.type === RESET_TIME) {
+    else if(action.type === RESET_CLOCK) {
         if(action.timeType === "player") {
             return state.set("player", 0);
         }

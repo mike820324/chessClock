@@ -7,9 +7,7 @@ import { GAME_START, GAME_END, GAME_PAUSE } from "../constants/gameStatusType";
 const gameInitialState = Map(
     {
         status: GAME_END,
-        gameTime: 0,
         currentPlayer: "player1",
-        playerTime: 0,
         globalTimer: null
     }
 );

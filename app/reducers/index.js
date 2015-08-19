@@ -7,14 +7,19 @@ import { clockStatus } from "./clockStatus";
 //
 //{
 //  gameStatus: {
-//      status: string 
+//      status: string
 //  }
 //  clockStatus: {
-//      gameTime: number,
-//      playerTime: number
+//      length: number of clock
+//      clocks: {
+//          game: number,
+//          player: number
+//      }
 //  }
 //  playerStatus: {
 //      current: string,
+//      playersName: array of string,
+//      playersHistory: array of number
 //  }
 //  historyStatus: {
 //      player1: List,

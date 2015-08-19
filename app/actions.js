@@ -1,6 +1,6 @@
 import { START_GAME, END_GAME, PAUSE_GAME } from "./constants/actionType";
 import { START_TIMER, STOP_TIMER } from "./constants/actionType";
-import { TIME_TICK, RESET_TIME } from "./constants/actionType";
+import { TIME_TICK, RESET_CLOCK } from "./constants/actionType";
 import { SWITCH_PLAYER, ADD_HISTORY } from "./constants/actionType";
 
 // switch the user
@@ -28,9 +28,9 @@ export function timeTick() {
     };
 }
 
-export function resetTime(timeType) {
+export function resetClock(timeType) {
     return {
-        type: RESET_TIME,
+        type: RESET_CLOCK,
         timeType
     };
 }
@@ -75,8 +75,8 @@ export function startGame() {
 export function endGame() {
     return dispatch => {
         dispatch(stopTimer());
-        dispatch(resetTime("player"));
-        dispatch(resetTime("game"));
+        dispatch(resetClock("player"));
+        dispatch(resetClock("game"));
         dispatch({
             type: END_GAME
         });

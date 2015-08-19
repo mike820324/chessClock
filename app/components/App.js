@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { startGame, endGame, switchPlayer, resetTime, addHistory } from "../actions";
+import { startGame, endGame, switchPlayer, resetClock, addHistory } from "../actions";
+import { GAME_START, GAME_END, GAME_PAUSE } from "../constants/gameStatusType";
+
 import HistoryPanel from "./HistoryPanel";
 import TimeView from "./TimeCounter/TimeView";
-
-import { GAME_START, GAME_END, GAME_PAUSE } from "../constants/gameStatusType";
 
 class App extends Component {
     logTime() {
@@ -13,7 +13,7 @@ class App extends Component {
         if(gameStatus.status === GAME_START) {
             dispatch(addHistory(gameStatus.currentPlayer, clockStatus.player));
             dispatch(switchPlayer());
-            dispatch(resetTime("player"));
+            dispatch(resetClock("player"));
         }
     }
 
