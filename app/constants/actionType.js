@@ -18,6 +18,9 @@ const REMOVE_CLOCK = "REMOVE_CLOCK";
 const RESET_CLOCK = "RESET_CLOCK";
 const TIME_TICK = "TIME_TICK";
 
+const DISPLAY_GAME_LOG = "DISPLAY_GAME_LOG";
+const CLOSE_GAME_LOG = "CLOSE_GAME_LOG";
+
 export {
     // action related to game status
     START_GAME,
@@ -38,5 +41,8 @@ export {
     TIME_TICK,
     // action related to timer
     START_TIMER,
-    STOP_TIMER
+    STOP_TIMER,
+    // action related to game log
+    DISPLAY_GAME_LOG,
+    CLOSE_GAME_LOG
 };

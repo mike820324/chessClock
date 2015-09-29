@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Modal from "react-modal";
 
-import { startGame, endGame, switchPlayer, resetClock, addHistory } from "../actions";
+import { startGame, endGame, switchPlayer, resetClock, addHistory, displayGameLog, closeGameLog } from "../actions";
 import { GAME_START, GAME_END, GAME_PAUSE } from "../constants/gameStatusType";
 
 import HistoryPanel from "./HistoryPanel";
@@ -37,8 +38,18 @@ class App extends Component {
         }
     }
 
+    onDisplayGameLog() {
+        const { dispatch } = this.props;
+        dispatch(displayGameLog());
+    }
+
+    onCloseGameLog() {
+        const { dispatch } = this.props;
+        dispatch(closeGameLog());
+    }
+
     render() {
-        const { gameStatus, historyStatus, clockStatus } = this.props;
+        const { gameStatus, historyStatus, clockStatus, gameLogStatus } = this.props;
         const style = {
             textAlign: "center"
         };
@@ -56,6 +67,9 @@ class App extends Component {
                 <button onClick={this.logTime.bind(this)}>
                     log time
                 </button>
+                <button onClick={this.onDisplayGameLog.bind(this)}>
+                    history
+                </button>
                 <hr/>
                 <TimeView timeType="Game Time"
                     time={clockStatus.game}
@@ -69,6 +83,10 @@ class App extends Component {
                     player1={historyStatus.player1}
                     player2={historyStatus.player2}
                 />
+                <Modal isOpen={gameLogStatus.displayGameLog}>
+                    Hello
+                    <button onClick={this.onCloseGameLog.bind(this)}>Close</button>
+                </Modal>
             </div>
         );
     }
@@ -78,14 +96,16 @@ App.propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     gameStatus: React.PropTypes.object.isRequired,
     historyStatus: React.PropTypes.object.isRequired,
-    clockStatus: React.PropTypes.object.isRequired
+    clockStatus: React.PropTypes.object.isRequired,
+    gameLogStatus: React.PropTypes.object.isRequired
 };
 
 function select(state){
     return {
         gameStatus: state.gameStatus.toJS(),
         historyStatus: state.historyStatus.toJS(),
-        clockStatus: state.clockStatus.toJS()
+        clockStatus: state.clockStatus.toJS(),
+        gameLogStatus: state.gameLogStatus.toJS()
     };
 }
 

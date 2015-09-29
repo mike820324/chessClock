@@ -2,6 +2,7 @@ import { START_GAME, END_GAME, PAUSE_GAME } from "./constants/actionType";
 import { START_TIMER, STOP_TIMER } from "./constants/actionType";
 import { TIME_TICK, RESET_CLOCK } from "./constants/actionType";
 import { SWITCH_PLAYER, ADD_HISTORY } from "./constants/actionType";
+import { DISPLAY_GAME_LOG, CLOSE_GAME_LOG } from "./constants/actionType";
 
 // switch the user
 export function switchPlayer() {
@@ -89,5 +90,17 @@ export function pauseGame() {
         dispatch({
             type: PAUSE_GAME
         });
+    };
+}
+
+export function displayGameLog() {
+    return {
+        type: DISPLAY_GAME_LOG
+    };
+}
+
+export function closeGameLog() {
+    return {
+        type: CLOSE_GAME_LOG
     };
 }
