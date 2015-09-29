@@ -7,6 +7,7 @@ import { GAME_START, GAME_END, GAME_PAUSE } from "../constants/gameStatusType";
 
 import HistoryPanel from "./HistoryPanel";
 import TimeView from "./TimeCounter/TimeView";
+import GameLogView from "./GameLogView";
 
 class App extends Component {
     logTime() {
@@ -84,7 +85,17 @@ class App extends Component {
                     player2={historyStatus.player2}
                 />
                 <Modal isOpen={gameLogStatus.displayGameLog}>
-                    Hello
+                    <div>
+                        <table>
+                          <tr>
+                            <th>Date</th>
+                            <th>Black</th>
+                            <th>White</th>
+                            <th>Winner</th>
+                          </tr>
+                          {gameLogStatus.gameLogs.map(gameLog => <GameLogView gameLog={gameLog}></GameLogView>)}
+                        </table>
+                    </div>
                     <button onClick={this.onCloseGameLog.bind(this)}>Close</button>
                 </Modal>
             </div>

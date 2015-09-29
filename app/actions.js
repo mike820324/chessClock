@@ -1,8 +1,13 @@
+import GameLog from "./domain/GameLog";
+import restler from "restler";
+
 import { START_GAME, END_GAME, PAUSE_GAME } from "./constants/actionType";
 import { START_TIMER, STOP_TIMER } from "./constants/actionType";
 import { TIME_TICK, RESET_CLOCK } from "./constants/actionType";
 import { SWITCH_PLAYER, ADD_HISTORY } from "./constants/actionType";
 import { DISPLAY_GAME_LOG, CLOSE_GAME_LOG } from "./constants/actionType";
+
+import gameLogClient from "./service/gameLogClient";
 
 // switch the user
 export function switchPlayer() {
@@ -93,9 +98,17 @@ export function pauseGame() {
     };
 }
 
-export function displayGameLog() {
+export function receiveGameLog(gameLogs) {
     return {
-        type: DISPLAY_GAME_LOG
+        type: DISPLAY_GAME_LOG,
+        gameLogs: gameLogs
+    };
+}
+export function displayGameLog() {
+    return function(dispatch) {
+        gameLogClient.getGameLog().then(function(result) {
+            dispatch(receiveGameLog(result));
+        });
     };
 }
 
