@@ -3,6 +3,7 @@ import { gameStatus }from "./gameStatus";
 import { historyStatus } from "./historyStatus";
 import { timerStatus } from "./timerStatus";
 import { clockStatus } from "./clockStatus";
+import { gameLogStatus } from "./gameLogStatus";
 
 //
 //{
@@ -32,7 +33,8 @@ const chessClockApp = combineReducers({
     gameStatus,
     historyStatus,
     timerStatus,
-    clockStatus
+    clockStatus,
+    gameLogStatus
 });
 
 export default chessClockApp;
